@@ -75,9 +75,14 @@
         num++;
       elem.innerHTML = num;}
 
-    
-      
-
+    let url = 'https://oduvancheg666.github.io/Dolphin_Brother/'
+    const gameName = "Dolphin brother"
+    bot.onText(/\/start/, function onPhotoText(msg) {
+    bot.sendGame(msg.chat.id, gameName);
+        });
+    bot.on('callback_query', function onCallbackQuery(callbackQuery) {
+    bot.answerCallbackQuery(callbackQuery.id, { url });
+    });
 
     </script>
    
