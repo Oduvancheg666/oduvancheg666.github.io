@@ -74,16 +74,28 @@
     function addNum() {
         num++;
       elem.innerHTML = num;}
-
+        
+    const TOKEN = '747116110:AAEG2qljBfzPIKz3FE1JY_bSfRFnTjKPXNg'
+    const gameName = 'Dolphin brother'
     let url = 'https://oduvancheg666.github.io/Dolphin_Brother/'
-    const gameName = "Dolphin brother"
+    const TelegramBot = require('../..');
+    const express = require('express');
+    const path = require('path');
+        
+    const bot = new TelegramBot(TOKEN, { polling: true });
+    const app = express();
+    
     bot.onText(/\/start/, function onPhotoText(msg) {
     bot.sendGame(msg.chat.id, gameName);
         });
     bot.on('callback_query', function onCallbackQuery(callbackQuery) {
     bot.answerCallbackQuery(callbackQuery.id, { url });
     });
-
+    app.get('/', function requestListener(req, res) {
+    res.sendFile(path.join(__dirname, 'game.html'));
+});
+        
+        
     </script>
    
     
